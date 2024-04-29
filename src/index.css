@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,body {
+    overflow: hidden;
+    scrollbar-width: 'none';
+}
+.login__page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: rgb(110,106,190);
+   
+    background-image: url('./assets/jpg/login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background: linear-gradient(90deg, rgba(110,106,190,.1) 0%, rgba(9,9,121,.1) 12%, rgba(6,84,171,.1) 42%, rgba(5,96,179,.1) 70%, rgba(0,212,255,.1) 100%); */
+}
+
+.sidebar {
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
