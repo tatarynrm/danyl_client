@@ -21,7 +21,7 @@ const NavItem = ({ navSize, icon, title, active, description, href,localNavSize 
     return colorMode === 'dark' ? 'white' :"black"
   }
   return (
-    <Tooltip placement="right"  label={description}>
+
     <Flex
       mt={30}
       flexDir={"column"}
@@ -58,7 +58,7 @@ const NavItem = ({ navSize, icon, title, active, description, href,localNavSize 
       </Menu>
   
     </Flex>
-    </Tooltip>
+
   );
 };
 
