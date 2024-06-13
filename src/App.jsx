@@ -73,18 +73,19 @@ const getUserGoogle = async ()=>{
   try {
   const data = await $api('/auth/login/success');
 
-  if (data.data.user) {
+  if (data.data.user & localStorage.getItem('login_count') === 'true') {
     console.log(data.data.user);
     localStorage.setItem("token", data.data.user.accessToken);
     navigate("/");
-
+  }else {
+    localStorage.clear()
   }
   } catch (error) {
     console.log(error);
   }
 }
 getUserGoogle()
-},[])
+},[localStorage.getItem('login_count')])
 
   if (userData?.message === "ERROR_NETWORK") {
     return (

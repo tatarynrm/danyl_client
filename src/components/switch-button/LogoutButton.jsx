@@ -45,22 +45,15 @@ const LogoutButton = () => {
   const logoutFromServer = async () => {
     try {
       const data = await $api.post("/auth/logout");
+      window.localStorage.clear();
+   
+      clearAllCookies();
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
   };
-  const logout = async () => {
-    // await logoutFromServer();
-    window.localStorage.clear();
-    await logoutFromServer()
-  
-    // navigate("/login");
 
-    // window.open('http://localhost/8800/auth/logout','_self')
-    clearAllCookies();
-    navigate("/login");
-    // window.location.reload();
-  };
 
   return (
     <>
@@ -97,7 +90,7 @@ const LogoutButton = () => {
             <Text fontSize={20}>Ви дійсно хочете вийти з системи?</Text>
           </ModalBody>
           <ModalFooter display={"flex"} justifyContent={"space-between"}>
-            <Button colorScheme="red" onClick={logout}>
+            <Button colorScheme="red" onClick={logoutFromServer}>
               Так,вийти!
             </Button>
             <Button colorScheme="green" onClick={onClose}>
