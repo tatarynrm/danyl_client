@@ -76,9 +76,7 @@ const LoginForm = () => {
       navigate("/");
     }
   }, [userData, token]);
-  useEffect(()=>{
-localStorage.setItem('login_count','true')
-  },[localStorage.getItem('login_count')])
+
 
   return (
     <Flex flexDir={"column"} gap={10} alignItems={'center'} pos={"relative"} zIndex={9999}>
