@@ -5,8 +5,10 @@ import usePlatformDetection from "../../hooks/usePlatformDetection";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuth } from "../../store/auth.slice";
 import { useNavigate } from "react-router-dom";
-import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import { Button, Flex, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
 import GoogleLoginButton from "../google/google-login/GoogleLoginButton";
+import { LuEyeOff ,LuEye } from "react-icons/lu";
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +21,9 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.data);
   const [showError, setShowError] = useState(false);
+
+  const [show, setShow] = React.useState(false)
+  const handleClick = () => setShow(!show)
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -95,8 +100,9 @@ const LoginForm = () => {
           setEmail(e.target.value);
         }}
       />
+       <InputGroup size='md'>
       <Input
-        type="password"
+        type={show ? 'text':'password'}
         placeholder="Password"
         value={password}
         onChange={(e) => {
@@ -104,6 +110,13 @@ const LoginForm = () => {
           setPassword(e.target.value);
         }}
       />
+            <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? <LuEyeOff/> : <LuEye/>}
+   
+        </Button>
+      </InputRightElement>
+      </InputGroup>
       <Button width={'100%'} onClick={signIn}>Логін</Button>
 
       <GoogleLoginButton/>
