@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAuth } from "../../store/auth.slice";
 import { useNavigate } from "react-router-dom";
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import GoogleLoginButton from "../google/google-login/GoogleLoginButton";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const LoginForm = () => {
         password,
       })
     );
-    console.log(data);
+   
     if (data.payload.message === "Невірний логін чи пароль") {
       alert("Невірний логін чи пароль!");
     }
@@ -39,9 +40,9 @@ const LoginForm = () => {
     }
     if (data.payload.accessToken) {
       localStorage.setItem("token", data.payload.accessToken);
-      console.log(userData);
+    
       navigate("/");
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
@@ -72,7 +73,7 @@ const LoginForm = () => {
   }, [userData, token]);
 
   return (
-    <Flex flexDir={"column"} gap={10} pos={"relative"} zIndex={9999}>
+    <Flex flexDir={"column"} gap={10} alignItems={'center'} pos={"relative"} zIndex={9999}>
       {showError && (
         <Text
           pos="absolute"
@@ -103,7 +104,9 @@ const LoginForm = () => {
           setPassword(e.target.value);
         }}
       />
-      <Button onClick={signIn}>Логін</Button>
+      <Button width={'100%'} onClick={signIn}>Логін</Button>
+
+      <GoogleLoginButton/>
     </Flex>
   );
 };

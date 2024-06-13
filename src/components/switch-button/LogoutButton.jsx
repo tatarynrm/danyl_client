@@ -27,21 +27,38 @@ const LogoutButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
   const navigate = useNavigate();
-
+  function clearAllCookies() {
+    // Get all cookies
+    var cookies = document.cookie.split(";");
+  
+    // Iterate through each cookie and delete it by setting it to expire in the past
+    cookies.forEach(function(cookie) {
+      var cookieName = cookie.split("=")[0].trim();
+      document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    });
+  }
+  
+  // Example usage
+ 
   const logoutFromServer = async () => {
     try {
-      const data = await $api.get("/auth/logout");
-      console.log(data);
+      const data = await $api.post("/auth/logout");
     } catch (error) {
       console.log(error);
     }
   };
   const logout = async () => {
-    logoutFromServer();
+    // await logoutFromServer();
     window.localStorage.clear();
-    navigate("/login");
+    await logoutFromServer()
+  
+    // navigate("/login");
+
+    // window.open('http://localhost/8800/auth/logout','_self')
+    clearAllCookies();
     window.location.reload();
   };
+
   return (
     <>
       <Tooltip label={`Вийти з аккаунту`}>

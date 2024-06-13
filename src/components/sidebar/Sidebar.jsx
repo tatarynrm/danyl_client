@@ -107,7 +107,6 @@ const Sidebar = ({ localNavSize }) => {
             <Heading as={"h3"} size={"sm"}>
               {userInfo?.name}
             </Heading>
-            <Text color={"gray"}>{userInfo?.role}</Text>
           </Flex>
         </Flex>
         <ColorModeSwitch />

@@ -1,6 +1,6 @@
 import axios from "axios";
-// export const API_URL = `http://localhost:8800`;
-export const API_URL = `https://api.vendwater.tech`;
+export const API_URL = `http://localhost:8800`;
+// export const API_URL = `https://api.vendwater.tech`;
 const $api = axios.create({
   withCredentials: true,
   baseURL: API_URL,
@@ -31,7 +31,7 @@ $api.interceptors.response.use(
         localStorage.setItem("token", response.data.accessToken);
         return $api.request(originalRequest);
       } catch (error) {
-        console.log("НЕ АВТОРИЗОВАНИЙ КОРИСТУВАЧ");
+        console.log("НЕ АВТОРИЗОВАНИЙ КОРИСТУВАЧ",error);
         window.localStorage.removeItem('token')
       }
     }

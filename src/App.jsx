@@ -68,6 +68,24 @@ function App() {
   }, [token, unauthorized]);
 
 
+useEffect(()=>{
+const getUserGoogle = async ()=>{
+  try {
+  const data = await $api('/auth/login/success');
+
+  if (data.data.user) {
+    console.log(data.data.user);
+    localStorage.setItem("token", data.data.user.accessToken);
+    navigate("/");
+
+  }
+  } catch (error) {
+    console.log(error);
+  }
+}
+getUserGoogle()
+},[])
+
   if (userData?.message === "ERROR_NETWORK") {
     return (
       <Flex
@@ -81,6 +99,10 @@ function App() {
       </Flex>
     );
   }
+
+
+
+
   return (
     <Flex pos={"relative"} flexDir={"row"} gap={10} height={"100vh"}>
       {token && userData?.userInfo?.email && (

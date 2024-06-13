@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google"
 import theme from "./theme";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +14,9 @@ root.render(
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <BrowserRouter>
-        <App />
+        <GoogleOAuthProvider clientId="540222255185-9qko54kg4g4n4t783svnuojkfhfia0d7.apps.googleusercontent.com" >
+          <App />
+        </GoogleOAuthProvider>
       </BrowserRouter>
     </ChakraProvider>
   </Provider>
