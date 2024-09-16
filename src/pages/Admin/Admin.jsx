@@ -6,7 +6,7 @@ import CrumbsComponent from "../../components/crumbs/CrumbsComponent";
 import { Link } from "react-router-dom";
 import AdminNavbar from "./AdminNavbar";
 import CreateUser from "./AdminPages/CreateUser";
-import Test from "./AdminPages/Test";
+
 
 
 const Admin = ({ children }) => {
@@ -48,7 +48,7 @@ const Admin = ({ children }) => {
       <Flex display={"grid"} gridTemplateColumns={"100%"} gap={4}>
         <AdminNavbar>
           <CreateUser />
-          <Test />
+
         </AdminNavbar>
       </Flex>
     </Flex>

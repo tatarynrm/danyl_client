@@ -27,7 +27,7 @@ const OneDeviceState = ({ id }) => {
   useEffect(() => {
     const getOneData = async () => {
       try {
-        const data = await $api.get(`/device/state/${id}`);
+        const data = await $api.get(`/devices/state/${id}`);
 
         setState(data.data);
       } catch (error) {

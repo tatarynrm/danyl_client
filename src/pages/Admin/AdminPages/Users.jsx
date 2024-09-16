@@ -47,7 +47,7 @@ const Users = () => {
   const handleSearchByEmail = async(e)=>{
   
     const value = e.target.value
-    console.log(value);
+
     setSearch(value)
 
     if (value.length > 1) {

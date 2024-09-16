@@ -79,6 +79,9 @@ const LoginForm = () => {
 
 
   return (
+    <form onSubmit={signIn}>
+
+   
     <Flex flexDir={"column"} gap={10} alignItems={'center'} pos={"relative"} zIndex={9999}>
       {showError && (
         <Text
@@ -118,10 +121,11 @@ const LoginForm = () => {
         </Button>
       </InputRightElement>
       </InputGroup>
-      <Button width={'100%'} onClick={signIn}>Логін</Button>
+      <Button type="submit" width={'100%'} onClick={signIn}>Логін</Button>
 
-      <GoogleLoginButton/>
+      {/* <GoogleLoginButton/> */}
     </Flex>
+    </form>
   );
 };
 

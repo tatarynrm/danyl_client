@@ -29,11 +29,14 @@ import { fetchAuthMe } from "./store/auth.slice";
 import MainSvgBackground from "./components/svg-background/MainSvgBackground";
 import Admin from "./pages/Admin/Admin";
 import CreateUser from "./pages/Admin/AdminPages/CreateUser";
-import Test from "./pages/Admin/AdminPages/Test";
+
 import Device from "./pages/Device/Device";
 import OneDevice from "./pages/Device/OneDevice";
 import { Text } from "recharts";
 import Users from "./pages/Admin/AdminPages/Users";
+import CreateCompany from "./pages/Admin/AdminPages/CreateCompany";
+import Companies from "./pages/Admin/AdminPages/Companies";
+import CreateDevice from "./pages/Admin/AdminPages/CreateDevice";
 
 function App() {
   const OverlayOne = () => (
@@ -110,7 +113,6 @@ getUserGoogle()
           <Sidebar localNavSize={localNavSize} />
         </>
       )}
-
       <Flex width={"100%"}>
         <Routes>
           <Route exact path="/" element={<PrivateRoutes />}>
@@ -120,6 +122,12 @@ getUserGoogle()
             <Route path="/admin" element={<Admin />}>
               <Route path="create-user" element={<CreateUser />} />
               <Route path="users" element={<Users />} />
+
+              <Route path="create-company" element={<CreateCompany />} />
+              <Route path="companies" element={<Companies />} />
+
+              <Route path="create-device" element={<CreateDevice />} />
+              <Route path="companies" element={<Companies />} />
             </Route>
           </Route>
 

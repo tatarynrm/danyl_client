@@ -11,7 +11,7 @@ const OneDevice = () => {
   const { id } = useParams();
   const getOneDevice = async (id) => {
     try {
-      const data = await $api.get(`/device/${id}`);
+      const data = await $api.get(`/devices/state/${id}`);
       setItem(data.data);
     } catch (error) {
       console.log(error);

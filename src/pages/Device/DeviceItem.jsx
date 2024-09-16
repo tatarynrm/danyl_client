@@ -25,11 +25,11 @@ import "moment/locale/uk";
 import { Link } from "react-router-dom";
 const DeviceItem = ({ item }) => {
   const { colorMode } = useColorMode();
-  console.log(item);
+
   return (
     <Card
       cursor={"context-menu"}
-      width={"300px"}
+      width={["100%", "100%", "30%", "30%"]}
       height={"400px"}
       backgroundColor={colorMode == "dark" ? "#4ew4ew" : "#4ew4ew"}
     >

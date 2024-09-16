@@ -19,11 +19,13 @@ import ColorModeSwitch from "../switch-button/ColorModeSwitch";
 import $api from "../../http";
 import LogoutButton from "../switch-button/LogoutButton";
 import { sidebar_menu } from "../../data/siderbar_menu";
+import { accessLevels } from "../../contants/access";
 
 const Sidebar = ({ localNavSize }) => {
   const [navSize, setNavSize] = useState(localNavSize);
   const location = useLocation();
   const { userInfo } = useSelector((state) => state.auth.data);
+console.log(userInfo);
 
   useEffect(() => {
     if (!localNavSize) {
@@ -70,7 +72,21 @@ const Sidebar = ({ localNavSize }) => {
           }}
         />
 
-        {sidebar_menu.map((item, idx) => {
+        {sidebar_menu.filter(item =>{
+          if (userInfo?.role_id === 3) {
+            return item.role !== accessLevels.ADMIN 
+          }
+          // ADMIN
+          if (userInfo?.role_id === 2) {
+            return item.role !== accessLevels.SUPER_ADMIN
+          }
+           // SUPER_ADMIN
+          if (userInfo?.role_id === 1) {
+            return item.role 
+          }
+      
+        }
+        ).map((item, idx) => {
           return (
             <NavLink key={idx} to={item.link} style={{ width: "100%" }}>
               <NavItem

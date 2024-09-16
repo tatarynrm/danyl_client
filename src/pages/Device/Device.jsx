@@ -8,8 +8,10 @@ const Device = () => {
   const [search, setSearch] = useState("");
   const getDevices = async () => {
     try {
-      const data = await $api.get("/device");
+      const data = await $api.get("/devices");
       setDevice(data.data);
+      console.log(data);
+      
     } catch (error) {
       console.log(error);
     }
@@ -22,10 +24,13 @@ const Device = () => {
 
   return (
     <Flex width={"98%"} height={"90vh"} p={5} flexDir={"column"}>
-      <Box width={"60%"}>
+      <Box marginBottom={'10px'} width={["100%", "100%", "30%", "30%"]}  > 
         <Input 
+            
         onChange={e => setSearch(e.target.value)}
         placeholder="Пошук за кодом,розсташуванням..." />
+
+        
       </Box>
       {!device ? (
         <Text> Loading ...</Text>
