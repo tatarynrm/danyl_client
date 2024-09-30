@@ -37,6 +37,8 @@ import Users from "./pages/Admin/AdminPages/Users";
 import CreateCompany from "./pages/Admin/AdminPages/CreateCompany";
 import Companies from "./pages/Admin/AdminPages/Companies";
 import CreateDevice from "./pages/Admin/AdminPages/CreateDevice";
+import AdminDevices from "./pages/Admin/AdminPages/AdminDevices";
+import Places from "./pages/Places/Places";
 
 function App() {
   const OverlayOne = () => (
@@ -56,6 +58,9 @@ function App() {
   const localNavSize = localStorage.getItem("navSize");
   const [tokens, setTokens] = useState([]);
   const [unauthorized, setUnauthorized] = useState(false);
+
+
+  
 
   useEffect(() => {
     token && dispatch(fetchAuthMe());
@@ -119,6 +124,7 @@ getUserGoogle()
             <Route path="/" element={<Home />} />
             <Route path="/devices" element={<Device />} />
             <Route path="/devices/:id" element={<OneDevice />} />
+            <Route path="/places" element={<Places />} />
             <Route path="/admin" element={<Admin />}>
               <Route path="create-user" element={<CreateUser />} />
               <Route path="users" element={<Users />} />
@@ -127,7 +133,7 @@ getUserGoogle()
               <Route path="companies" element={<Companies />} />
 
               <Route path="create-device" element={<CreateDevice />} />
-              <Route path="companies" element={<Companies />} />
+              <Route path="devices" element={<AdminDevices />} />
             </Route>
           </Route>
 

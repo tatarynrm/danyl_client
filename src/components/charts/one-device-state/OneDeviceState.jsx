@@ -19,7 +19,6 @@ import { Flex, Heading, useColorMode } from "@chakra-ui/react";
 const OneDeviceState = ({ id }) => {
   const [state, setState] = useState([]);
   const { colorMode } = useColorMode();
-  console.log(state);
   const getColor = () => {
     return colorMode === "dark" ? "whitesmoke" : "lightgrey";
   };

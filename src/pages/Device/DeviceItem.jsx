@@ -31,6 +31,8 @@ const DeviceItem = ({ item }) => {
       cursor={"context-menu"}
       width={["100%", "100%", "30%", "30%"]}
       height={"400px"}
+      border={'2px solid gray'}
+      borderRadius={'20px'}
       backgroundColor={colorMode == "dark" ? "#4ew4ew" : "#4ew4ew"}
     >
       <CardHeader display={"flex"} gap={"10px"}>

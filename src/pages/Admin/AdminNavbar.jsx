@@ -25,20 +25,6 @@ const AdminNavbar = () => {
     >
       <Flex gap={4} flexDir={["column", "column", "column", "row"]}>
 
-
-        <Menu>
-          <MenuButton as={Button} rightIcon={<IoChevronDownCircleOutline />}>
-            Меню користувачів
-          </MenuButton>
-          <MenuList>
-            <MenuItem>
-              <Link to={"/admin/create-user"}>Створити користувача</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to={"/admin/users"}>Список користувачів</Link>
-            </MenuItem>
-          </MenuList>
-        </Menu>
         {/* Клієнти */}
         <Menu>
           <MenuButton as={Button} rightIcon={<IoChevronDownCircleOutline />}>
@@ -53,6 +39,20 @@ const AdminNavbar = () => {
             </MenuItem>
           </MenuList>
         </Menu>
+        <Menu>
+          <MenuButton as={Button} rightIcon={<IoChevronDownCircleOutline />}>
+            Меню користувачів
+          </MenuButton>
+          <MenuList>
+            <MenuItem>
+              <Link to={"/admin/create-user"}>Створити користувача</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to={"/admin/users"}>Список користувачів</Link>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+
                 {/* Меню апаратів */}
                 <Menu>
           <MenuButton as={Button} rightIcon={<IoChevronDownCircleOutline />}>

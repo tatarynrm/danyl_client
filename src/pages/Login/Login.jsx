@@ -13,13 +13,7 @@ const Login = () => {
       textAlign={"center"}
       pos={"relative"}
       zIndex={9999}
-      style={
-        {
-          // backgroundImage: `url(${backgroundPhoto})`,
-          // backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-        }
-      }
+
     >
       <MainSvgBackground />
 
