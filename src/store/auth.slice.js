@@ -5,7 +5,6 @@ export const fetchAuth = createAsyncThunk(
   "auth/fetchUserData",
   async (params) => {
     try {
-      // axios.defaults.withCredentials = true;
       const { data } = await $api.post("/auth/login", params);
 
       return data;
@@ -16,9 +15,7 @@ export const fetchAuth = createAsyncThunk(
 );
 export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
   try {
-    // const { data } = await axiosMain.get("https://api2.ict.lviv.ua//refresh", {
-    //   withCredentials: true,
-    // });
+
     const { data } = await $api.get("/auth/refresh", {
       withCredentials: true,
     });

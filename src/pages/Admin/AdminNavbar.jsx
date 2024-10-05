@@ -23,7 +23,7 @@ const AdminNavbar = () => {
       flexWrap={["wrap", "wrap", "wrap", "wrap"]}
       gap={2}
     >
-      <Flex gap={4} flexDir={["column", "column", "column", "row"]}>
+      <Flex gap={4} flexDir={["column", "column", "row", "row"]}>
 
         {/* Клієнти */}
         <Menu>
@@ -39,13 +39,13 @@ const AdminNavbar = () => {
             </MenuItem>
           </MenuList>
         </Menu>
-        <Menu>
+        <Menu width={'100%'}>
           <MenuButton as={Button} rightIcon={<IoChevronDownCircleOutline />}>
             Меню користувачів
           </MenuButton>
           <MenuList>
-            <MenuItem>
-              <Link to={"/admin/create-user"}>Створити користувача</Link>
+            <MenuItem width={'100%'}>
+              <Link width={'100%'} to={"/admin/create-user"}>Створити користувача</Link>
             </MenuItem>
             <MenuItem>
               <Link to={"/admin/users"}>Список користувачів</Link>

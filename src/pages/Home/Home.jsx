@@ -81,7 +81,7 @@ const Home = () => {
   }
 
   return (
-    <Flex flexDir={'column'} margin={'0 auto'} width={"98%"} height={"90vh"}  overflow={'scroll'} overflowX={'auto'}   sx={ {
+    <Flex flexDir={'column'} margin={'0 auto'} width={"100%"} height={"90vh"}  overflow={'scroll'} overflowX={'auto'}   sx={ {
       "::-webkit-scrollbar": {
         width: "8px",
         height: "8px",

@@ -17,6 +17,7 @@ import {
   Box,
   Button,
   Flex,
+  Icon,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -42,6 +43,11 @@ import AdminDevices from "./pages/Admin/AdminPages/AdminDevices";
 import Places from "./pages/Places/Places";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SideBarNew from "./components/sidebar/SideBarNew";
+import { CiBellOff, CiBellOn } from "react-icons/ci";
+import { BellIcon } from "@chakra-ui/icons";
+import { fetchMessages } from "./store/messages.slice";
+import UserMessages from "./components/user-messages/UserMessages";
+
 function App() {
   const OverlayOne = () => (
     <ModalOverlay
@@ -50,7 +56,6 @@ function App() {
     />
   );
 
-  
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayOne />);
   const dispatch = useDispatch();
@@ -63,9 +68,7 @@ function App() {
   const [tokens, setTokens] = useState([]);
   const [unauthorized, setUnauthorized] = useState(false);
 
-const [burgerMenuOpen,setBurgerMenuOpen] = useState(false)
-
-  
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
     token && dispatch(fetchAuthMe());
@@ -74,30 +77,35 @@ const [burgerMenuOpen,setBurgerMenuOpen] = useState(false)
     generateUserDevice();
   }, []);
 
+
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
   }, [token, unauthorized]);
 
+  useEffect(() => {
+    const getUserGoogle = async () => {
+      try {
+        const data = await $api("/auth/login/success");
 
-useEffect(()=>{
-const getUserGoogle = async ()=>{
-  try {
-  const data = await $api('/auth/login/success');
+        if (data.data.user) {
+          console.log(data.data.user);
+          localStorage.setItem("token", data.data.user.accessToken);
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUserGoogle();
+  }, [localStorage.getItem("login_count")]);
 
-  if (data.data.user) {
-    console.log(data.data.user);
-    localStorage.setItem("token", data.data.user.accessToken);
-    navigate("/");
-  }
-  } catch (error) {
-    console.log(error);
-  }
-}
-getUserGoogle()
-},[localStorage.getItem('login_count')])
-
+  useEffect(() => {
+    console.log('userData?.userInfo?.company_id',userData?.userInfo?.company_id);
+    
+    token && dispatch(fetchMessages({company_id:userData?.userInfo?.company_id}));
+   }, [dispatch,token,userData?.userInfo?.company_id]);
   if (userData?.message === "ERROR_NETWORK") {
     return (
       <Flex
@@ -112,24 +120,43 @@ getUserGoogle()
     );
   }
 
-
-
-
   return (
     <Flex pos={"relative"} flexDir={"row"} gap={10} height={"100vh"}>
-       <MainSvgBackground />
+      <MainSvgBackground />
       {/* {token && userData?.userInfo?.email && (
         <>
          
           <Sidebar localNavSize={localNavSize} />
         </>
       )} */}
-      <Box onClick={onOpen}  cursor={'pointer'} fontSize={30} zIndex={999} position={'fixed'} top={2} right={2}>
-      <GiHamburgerMenu  />
+      <Box
+        marginBottom={20}
+ 
+        cursor={"pointer"}
+        fontSize={30}
+        zIndex={999}
+        position={"fixed"}
+        top={2}
+        right={2}
+        display={"flex"}
+        alignItems={'center'}
+        textAlign={'center'}
+        gap={"30px"}
+      >
+        <Box >
+      <UserMessages/>
+        </Box>
+        <Box onClick={onOpen}   >
+          <GiHamburgerMenu />
+        </Box>
       </Box>
 
-      <SideBarNew isOpen={isOpen} onClose={onClose} localNavSize={localNavSize} />
-      <Flex width={"100%"}>
+      <SideBarNew
+        isOpen={isOpen}
+        onClose={onClose}
+        localNavSize={localNavSize}
+      />
+      <Flex marginTop={10} width={"100%"}>
         <Routes>
           <Route exact path="/" element={<PrivateRoutes />}>
             <Route path="/" element={<Home />} />

@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux'
 import { accessLevels } from '../../contants/access'
 import { NavLink, useLocation } from 'react-router-dom'
 import NavItem from './NavItem'
+import ColorModeSwitch from '../switch-button/ColorModeSwitch'
 
 
 const SideBarNew = ({onOpen,onClose,isOpen,localNavSize}) => {
@@ -78,6 +79,7 @@ const SideBarNew = ({onOpen,onClose,isOpen,localNavSize}) => {
             </React.Fragment>
           );
         })}
+            <ColorModeSwitch/>
           </DrawerBody>
 
           <DrawerFooter>
