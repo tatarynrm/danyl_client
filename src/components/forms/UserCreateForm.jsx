@@ -59,7 +59,7 @@ const UserCreateForm = () => {
       console.log(error);
     }
   };
-    // Fetch companies from the server
+
     const fetchCompanies = async () => {
       try {
           const response = await $api.post('/company/companies-search',{searchValue:searchCompany}); // Replace with your API endpoint
@@ -71,8 +71,6 @@ const UserCreateForm = () => {
           console.error('Error fetching companies:', error);
       }
   };
-console.log(searchCompany);
-
   useEffect(() => {
  
       if (searchCompany.length > 2) {

@@ -14,6 +14,7 @@ import Login from "./pages/Login/Login";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./components/sidebar/Sidebar";
 import {
+  Box,
   Button,
   Flex,
   Modal,
@@ -39,7 +40,8 @@ import Companies from "./pages/Admin/AdminPages/Companies";
 import CreateDevice from "./pages/Admin/AdminPages/CreateDevice";
 import AdminDevices from "./pages/Admin/AdminPages/AdminDevices";
 import Places from "./pages/Places/Places";
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import SideBarNew from "./components/sidebar/SideBarNew";
 function App() {
   const OverlayOne = () => (
     <ModalOverlay
@@ -47,6 +49,8 @@ function App() {
       backdropFilter="blur(5px) hue-rotate(90deg)"
     />
   );
+
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = useState(<OverlayOne />);
   const dispatch = useDispatch();
@@ -59,6 +63,7 @@ function App() {
   const [tokens, setTokens] = useState([]);
   const [unauthorized, setUnauthorized] = useState(false);
 
+const [burgerMenuOpen,setBurgerMenuOpen] = useState(false)
 
   
 
@@ -112,12 +117,18 @@ getUserGoogle()
 
   return (
     <Flex pos={"relative"} flexDir={"row"} gap={10} height={"100vh"}>
-      {token && userData?.userInfo?.email && (
+       <MainSvgBackground />
+      {/* {token && userData?.userInfo?.email && (
         <>
-          <MainSvgBackground />
+         
           <Sidebar localNavSize={localNavSize} />
         </>
-      )}
+      )} */}
+      <Box onClick={onOpen}  cursor={'pointer'} fontSize={30} zIndex={999} position={'fixed'} top={2} right={2}>
+      <GiHamburgerMenu  />
+      </Box>
+
+      <SideBarNew isOpen={isOpen} onClose={onClose} localNavSize={localNavSize} />
       <Flex width={"100%"}>
         <Routes>
           <Route exact path="/" element={<PrivateRoutes />}>

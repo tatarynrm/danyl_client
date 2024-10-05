@@ -27,7 +27,12 @@ export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
       window.localStorage.removeItem("token");
 
 
-    } else {
+    } 
+    else if (data.error === 'Invalid token') {
+localStorage.removeItem('token')
+
+    }
+    else {
       return data;
     }
   } catch (error) {

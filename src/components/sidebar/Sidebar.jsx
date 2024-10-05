@@ -25,7 +25,7 @@ const Sidebar = ({ localNavSize }) => {
   const [navSize, setNavSize] = useState(localNavSize);
   const location = useLocation();
   const { userInfo } = useSelector((state) => state.auth.data);
-console.log(userInfo);
+
 
   useEffect(() => {
     if (!localNavSize) {
